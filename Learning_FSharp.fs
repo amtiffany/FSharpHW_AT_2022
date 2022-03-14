@@ -13,10 +13,23 @@ printfn "hi there!"
 
 //"[1;3;4.2]" does NOT work
 
-lst = [1;2;3]
-lst2 = [1::2::3]
-lstFlt = [1.0;2.3;2.48]
-lstStr = ["word"; "some other phrase"; "yet another phrase"; "2"; "3.4"]
+let lst = [1;2;3]
+let lst2 = [1::2::3]
+let lstFlt = [1.0;2.3;2.48]
+let lstStr = ["word"; "some other phrase"; "yet another phrase"; "2"; "3.4"]
+
+
+//arrays
+//arrays are dynamic, but fixed size
+//all arrays contain only one type of element 
+
+let arry = {|1;2;3|]
+let arry2 = 
+    {|
+        1
+        2
+        3
+    |]
 
 
 //"Entry points" are where coe execution formally starts
