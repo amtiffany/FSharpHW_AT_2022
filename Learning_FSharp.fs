@@ -4,7 +4,7 @@
 //built in functions end in fn
 
 //print
-printfn "hi there!"
+// printfn "hi there!"
 
 
 //lists
@@ -42,6 +42,23 @@ let GreetFn (phrase:string) =
     printfn "%s" phrase
 
 
+let reversefn (ori_list) =
+    let rev_arr = [|for i in ori_list -> i|]
+    let arr_len = rev_arr.Length - 1
+    let arr_half = int (rev_arr.Length/2)
+    for j = 0 to arr_half do 
+        let mutable a = rev_arr[j]
+        let mutable b = rev_arr[arr_len - j]
+        rev_arr[j] <- b 
+        rev_arr[arr_len - j] <- a
+        printfn "%A" rev_arr
+    rev_arr
+
+
+
+    
+
+
 //for loops are the same as in python, except that they end with "do"
 //functions with multiple parameters must have them in parenthesis, and separated with commas
 
@@ -59,11 +76,9 @@ let GreetFn (phrase:string) =
 //use 'mutable' key word to make dynamic
 //use  '<-' to assign new values to dynamic varriables
 let var1 = 10
-printfn "%A" var1
 
 let mutable var2 = 8
 var2 <- 9
-printfn "%A" var2
 
 let var3 = var2
 
@@ -78,6 +93,9 @@ var4 <- var2
 
 [<EntryPoint>]
 let randfn argument =
+    printfn "%A" var1
+    printfn "%A" var2
+
     printfn "hello"
     GreetFn "Hello!"
     0
