@@ -45,13 +45,13 @@ let GreetFn (phrase:string) =
 let reversefn (ori_list) =
     let rev_arr = [|for i in ori_list -> i|]
     let arr_len = rev_arr.Length - 1
-    let arr_half = int (rev_arr.Length/2)
+    let arr_half = rev_arr.Length
     for j = 0 to arr_half do 
-        let mutable a = rev_arr[j]
-        let mutable b = rev_arr[arr_len - j]
-        rev_arr[j] <- b 
-        rev_arr[arr_len - j] <- a
-        printfn "%A" rev_arr
+        let mutable a = rev_arr.[j]
+        let mutable b = rev_arr.[arr_len - j]
+        rev_arr.[j] <- b 
+        rev_arr.[arr_len - j] <- a
+        //printfn "%A" rev_arr
     rev_arr
 
 
