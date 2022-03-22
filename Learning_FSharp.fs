@@ -153,7 +153,27 @@ let oracle3 (a,b,c) =
     else if a > b && b > c then 1
     else 0
 
+///
+/// Implement and finish the following two functions that merge two sorted arrays
+/// and produce a combined sorted array
+/// 
 
+// Functional version
+let rec mergeRefactored (a:List<int>) (b:List<int>):List<int> =
+    let self = mergeRefactored // renaming into a shorter string
+    match a, b with
+    | [], [] -> []                           // both are empty
+    | h::t, [] | [], h::t -> h::t            // one is empty
+    | hA::tA, hB::tB -> failwith "Unimplementd" // neither one is empty... select smallest and recurse
+
+// Iterative version should use loops
+let mergeUsingIndexes (a:int[]) (b:int[]):int[] = 
+    let combined = a.Length + b.Length
+    let result = Array.zeroCreate combined
+    // TODO: Implement
+    // you will need to maintain two indexes inside the loop of the elements being considered
+    // as you select element from each input array you will ned to update indexes
+    result
 
 [<EntryPoint>]
 let randfn argument =
