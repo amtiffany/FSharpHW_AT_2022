@@ -91,6 +91,70 @@ var4 <- var2
 //%d--> returns integers
 //%s--> returns strings
 
+
+// reversefn properly named variables
+let reversefn2 (oriList:int[]) =
+    let revArr = [|for i in oriList -> i|]
+    let arrLen = revArr.Length - 1
+    let arrHalf = revArr.Length/2
+    for j = 0 to arrHalf do 
+        let a = revArr.[j]
+        let b = revArr.[arrLen - j]
+        revArr.[j] <- b 
+        revArr.[arrLen - j] <- a
+        //printfn "%A: %A" j revArr
+    revArr
+
+
+let sign x = 
+    match x with
+    | 0 -> 0
+    | u when u < 0 -> -1
+    | u -> 1
+
+let sign2 x = if x = 0 then 0 else if x < 0 then -1 else 1
+
+let rec fact x =
+    if x < 1 then 1
+    else x * fact (x - 1)
+
+let rec fib n =
+    match n with
+    | 0 -> 0
+    | 1 -> 1
+    | _ -> fib (n - 1) + fib (n - 2)
+
+// sum of elements of the list
+let rec sum list = 
+    match list with
+    | [] -> 0
+    | head :: tail -> head + sum tail
+
+// length of the list
+let rec llen list = 
+    match list with
+    | [] -> 0
+    | h :: t -> 1 + llen t
+
+// is the tuple ascending? decending? or neither
+let oracle t = 
+    match t with
+    | (a,b,c) when a > b && b > c -> 1
+    | (a,b,c) when a < b && b < c -> -1
+    | _-> 0
+
+let oracle2 = function
+    | (a,b,c) when a > b && b > c -> 1
+    | (a,b,c) when a < b && b < c -> -1
+    | _-> 0
+
+let oracle3 (a,b,c) =
+    if a < b && b < c then -1
+    else if a > b && b > c then 1
+    else 0
+
+
+
 [<EntryPoint>]
 let randfn argument =
     printfn "%A" var1
