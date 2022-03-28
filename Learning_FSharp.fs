@@ -42,7 +42,6 @@ let GreetFn (phrase:string) =
     printfn "%s" phrase
 
 
-<<<<<<< HEAD
 let reversefn (oriList) =
     let revArr = [|for i in oriList -> i|]
     let arrLen = revArr.Length - 1
@@ -54,19 +53,6 @@ let reversefn (oriList) =
         revArr.[arrLen - j] <- a
         ()
     revArr
-=======
-let reversefn (ori_list) =
-    let rev_arr = [|for i in ori_list -> i|]
-    let arr_len = rev_arr.Length - 1
-    let arr_half = rev_arr.Length
-    for j = 0 to arr_half do 
-        let mutable a = rev_arr.[j]
-        let mutable b = rev_arr.[arr_len - j]
-        rev_arr.[j] <- b 
-        rev_arr.[arr_len - j] <- a
-        //printfn "%A" rev_arr
-    rev_arr
->>>>>>> 63e21ca102a0e61c02c801501b0b38a8c1327ad5
 
 
 
