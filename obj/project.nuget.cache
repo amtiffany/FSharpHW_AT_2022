@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "6TDpQjc874llNSAYkXA9PzRUGByMNtuCU2jTU8SAEMVV14Uvv1iaAtJWDHQY8KwTMiRa0g1TiIjfdfm0RkQiIQ==",
+  "success": true,
+  "projectFilePath": "/Users/alice/Documents/FSharpHW_AT_2022/FSharpHW_AT_2022.fsproj",
+  "expectedPackageFiles": [
+    "/Users/alice/.nuget/packages/fsharp.core/5.0.0/fsharp.core.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
