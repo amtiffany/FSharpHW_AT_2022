@@ -42,17 +42,17 @@ let GreetFn (phrase:string) =
     printfn "%s" phrase
 
 
-let reversefn (ori_list) =
-    let rev_arr = [|for i in ori_list -> i|]
-    let arr_len = rev_arr.Length - 1
-    let arr_half = int (rev_arr.Length/2)
-    for j = 0 to arr_half do 
-        let mutable a = rev_arr[j]
-        let mutable b = rev_arr[arr_len - j]
-        rev_arr[j] <- b 
-        rev_arr[arr_len - j] <- a
-        printfn "%A" rev_arr
-    rev_arr
+let reversefn (oriList) =
+    let revArr = [|for i in oriList -> i|]
+    let arrLen = revArr.Length - 1
+    let arrHalf = revArr.Length/2
+    for j = 0 to arrHalf do 
+        let a = revArr.[j]
+        let b = revArr.[arrLen - j]
+        revArr.[j] <- b 
+        revArr.[arrLen - j] <- a
+        ()
+    revArr
 
 
 
