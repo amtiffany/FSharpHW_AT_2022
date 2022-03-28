@@ -189,6 +189,48 @@ let mergeUsingIndexes (a:int[]) (b:int[]):int[] =
     // as you select element from each input array you will ned to update indexes
     result
 
+
+//type MyType = {| color:string; weight:float;fish:string|}
+
+type MyRecord = { 
+    color:string
+    weight:float
+    mutable animal:string }
+
+let aa = (3,"foo")
+let bb = {| fish = "trout"; weight = 3.3; color="green" |}
+let cc = {| fish = "trout"; weight = 3.3; color="red" |}
+
+let qq:MyRecord = { color = "black"; weight =2.0; animal="wolf"  } 
+let qq2 = { qq with color="white"}
+qq2.animal <- "dddd"
+
+let k = bb.fish
+
+
+let stuff { color = c; weight = w; animal = a } = a
+
+let stuff2 arg = arg.animal
+
+
+type Direction = N | S | E | W
+
+let d = function
+| N -> "North"
+| E -> "East"
+| _ -> "??"
+
+type WeightUnits = Kg of float*float | Grams of MyRecord | Milligrams of float | Micrograms of float
+
+
+let mutable ss = Option.Some 23
+ss <- Option.None
+
+type MyList = Cons of int * MyList | Nil
+
+let ll = Cons(3, Cons(5, Cons(0,Nil)))
+
+
 [<EntryPoint>]
 let randfn argument =
     printfn "%A" var1
