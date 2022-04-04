@@ -244,11 +244,11 @@ let stuff { color = c; weight = w; animal = a } = a
 let stuff2 arg = arg.animal
 
 
-type Direction = N | S | E | W
+type Direction = N of int | S of int | E of int | W of int
 
 let d = function
-| N -> "North"
-| E -> "East"
+| N(i) -> $"North {i}"
+| E(i) -> "East"
 | _ -> "??"
 
 type WeightUnits = Kg of float*float | Grams of MyRecord | Milligrams of float | Micrograms of float
@@ -257,9 +257,17 @@ type WeightUnits = Kg of float*float | Grams of MyRecord | Milligrams of float |
 let mutable ss = Option.Some 23
 ss <- Option.None
 
+
 type MyList = Cons of int * MyList | Nil
 
 let ll = Cons(3, Cons(5, Cons(0,Nil)))
+
+
+let foo (a:MyList) = 
+    match a with
+    | Nil -> ()
+    | Cons(h,t) -> ()
+
 
 
 [<EntryPoint>]
