@@ -157,7 +157,6 @@ let oracle3 (a,b,c) =
 /// Implement and finish the following two functions that merge two sorted arrays
 /// and produce a combined sorted array
 /// 
-
 // Functional version
 let rec mergeRefactored (a:List<int>) (b:List<int>):List<int> =
     let self = mergeRefactored // renaming into a shorter string
@@ -173,8 +172,27 @@ let mergeUsingIndexes (a:int[]) (b:int[]):int[] =
     // TODO: Implement
     // you will need to maintain two indexes inside the loop of the elements being considered
     // as you select element from each input array you will ned to update indexes
+    let mutable inx = 0
+    for i = 0 to a.Length do
+        for j = 0 to b.Length do
+            if a[i] > b[j] or a[i] = b[j] do
+                combinedArr[inx] <- a[i]
+                inx <- inx + 1
+            else if a[i] < b[j] do
+                combinedArr[inx] <- b[j]
+                inx <- inx + 1
     result
+let combinedArr = [|for i in combined -> 0|]
 
+let mutable inx = 0
+for i in 0..a.Length do
+    for j in 0..b.Length do
+        if a[i] > b[j] or a[i] = b[j] do
+            combinedArr[inx] <- a[i]
+            inx <- inx + 1
+        else if a[i] < b[j] do
+            combinedArr[inx] <- b[j]
+            inx <- inx + 1
 
 //type MyType = {| color:string; weight:float;fish:string|}
 
