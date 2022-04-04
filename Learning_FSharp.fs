@@ -165,6 +165,7 @@ let rec mergeRefactored (a:List<int>) (b:List<int>):List<int> =
     | h::t, [] | [], h::t -> h::t            // one is empty
     | hA::tA, hB::tB -> failwith "Unimplementd" // neither one is empty... select smallest and recurse
 
+
 // Iterative version should use loops
 let mergeUsingIndexes (a:int[]) (b:int[]):int[] = 
     let combined = a.Length + b.Length
@@ -173,26 +174,30 @@ let mergeUsingIndexes (a:int[]) (b:int[]):int[] =
     // you will need to maintain two indexes inside the loop of the elements being considered
     // as you select element from each input array you will ned to update indexes
     let mutable inx = 0
+    let combinedArr = [|for i in 0..combined -> 0|]
     for i = 0 to a.Length do
         for j = 0 to b.Length do
-            if a[i] > b[j] or a[i] = b[j] do
+            if a[i] > b[j] || a[i] = b[j] then do
                 combinedArr[inx] <- a[i]
                 inx <- inx + 1
-            else if a[i] < b[j] do
-                combinedArr[inx] <- b[j]
-                inx <- inx + 1
+            else 
+                if a[i] < b[j] then do
+                    combinedArr[inx] <- b[j]
+                    inx <- inx + 1 
+                
     result
-let combinedArr = [|for i in combined -> 0|]
 
-let mutable inx = 0
-for i in 0..a.Length do
-    for j in 0..b.Length do
-        if a[i] > b[j] or a[i] = b[j] do
-            combinedArr[inx] <- a[i]
-            inx <- inx + 1
-        else if a[i] < b[j] do
-            combinedArr[inx] <- b[j]
-            inx <- inx + 1
+
+
+// let mutable inx = 0
+// for i in 0..a.Length do
+//     for j in 0..b.Length do
+//         if a[i] > b[j] or a[i] = b[j] then do
+//             combinedArr[inx] <- a[i]
+//             inx <- inx + 1
+//         else if a[i] < b[j] then do
+//             combinedArr[inx] <- b[j]
+//             inx <- inx + 1
 
 //type MyType = {| color:string; weight:float;fish:string|}
 
