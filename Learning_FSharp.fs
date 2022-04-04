@@ -163,7 +163,29 @@ let rec mergeRefactored (a:List<int>) (b:List<int>):List<int> =
     match a, b with
     | [], [] -> []                           // both are empty
     | h::t, [] | [], h::t -> h::t            // one is empty
-    | hA::tA, hB::tB -> failwith "Unimplementd" // neither one is empty... select smallest and recurse
+    | hA::tA, hB::tB ->
+        if hA < hB 
+        then hA :: (self tA b)
+        else hB :: (self a tB)
+
+
+let rec mergeRefactored2 (a:List<int>) (b:List<int>):List<int> =
+    let self = mergeRefactored2 // renaming into a shorter string
+    match a, b with
+    | [], [] -> []                           // both are empty
+    | h::t, [] | [], h::t -> h::t            // one is empty
+    | hA::tA, hB::_ when hA < hB -> hA :: (self tA b)
+    | _, hB::tB -> hB :: (self a tB)
+
+
+let rec mergeRefactored3 (a:List<int>) (b:List<int>):List<int> =
+    let cat x y z = x :: (mergeRefactored3 y z) // renaming into a shorter string
+    match a, b with
+    | [], [] -> []                           // both are empty
+    | h::t, [] | [], h::t -> h::t            // one is empty
+    | hA::tA, hB::_ when hA < hB -> cat hA tA b 
+    | _, hB::tB                  -> cat hB a tB
+
 
 
 // Iterative version should use loops
