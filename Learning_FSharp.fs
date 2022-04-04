@@ -263,10 +263,16 @@ type MyList = Cons of int * MyList | Nil
 let ll = Cons(3, Cons(5, Cons(0,Nil)))
 
 
-let foo (a:MyList) = 
+let rec count (a:MyList) = 
     match a with
-    | Nil -> ()
-    | Cons(h,t) -> ()
+    | Nil -> 0
+    | Cons(h, t) -> 1 + count t 
+
+let rec add (a:MyList) =
+    match a with 
+    | Nil -> 0
+    | Cons(h, t) -> h + add t 
+
 
 
 
