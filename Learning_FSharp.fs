@@ -195,17 +195,28 @@ let mergeUsingIndexes (a:int[]) (b:int[]):int[] =
     // TODO: Implement
     // you will need to maintain two indexes inside the loop of the elements being considered
     // as you select element from each input array you will ned to update indexes
-    let mutable inx = 0
-    let combinedArr = [|for i in 0..combined -> 0|]
-    for i = 0 to a.Length do
-        for j = 0 to b.Length do
-            if a[i] > b[j] || a[i] = b[j] then do
-                combinedArr[inx] <- a[i]
-                inx <- inx + 1
-            else 
-                if a[i] < b[j] then do
-                    combinedArr[inx] <- b[j]
-                    inx <- inx + 1 
+    let mutable XInx = 0
+    let mutable YInx = 0
+    for i=0 to combined do
+        if a[XInx] > b[YInx] || a[XInx] = b[YInx] then do
+            result[i] <- a[XInx]
+            XInx <- XInx + 1
+        else
+            if a[XInx] < b[YInx] then do
+                result[i] <- b[YInx]
+                YInx <- YInx + 1
+                
+    // let mutable inx = 0
+    // let combinedArr = [|for i in 0..combined -> 0|]
+    // for i = 0 to a.Length do
+    //     for j = 0 to b.Length do
+    //         if a[i] > b[j] || a[i] = b[j] then do
+    //             combinedArr[inx] <- a[i]
+    //             inx <- inx + 1
+    //         else 
+    //             if a[i] < b[j] then do
+    //                 combinedArr[inx] <- b[j]
+    //                 inx <- inx + 1 
                 
     result
 
