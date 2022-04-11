@@ -198,39 +198,17 @@ let mergeUsingIndexes (a:int[]) (b:int[]):int[] =
     let mutable XInx = 0
     let mutable YInx = 0
     for i=0 to combined do
-        if a[XInx] > b[YInx] || a[XInx] = b[YInx] then do
-            result[i] <- a[XInx]
+        if a.[XInx] > b.[YInx] || a.[XInx] = b.[YInx] then do
+            result.[i] <- a.[XInx]
             XInx <- XInx + 1
         else
-            if a[XInx] < b[YInx] then do
-                result[i] <- b[YInx]
+            if a.[XInx] < b.[YInx] then do
+                result.[i] <- b.[YInx]
                 YInx <- YInx + 1
-                
-    // let mutable inx = 0
-    // let combinedArr = [|for i in 0..combined -> 0|]
-    // for i = 0 to a.Length do
-    //     for j = 0 to b.Length do
-    //         if a[i] > b[j] || a[i] = b[j] then do
-    //             combinedArr[inx] <- a[i]
-    //             inx <- inx + 1
-    //         else 
-    //             if a[i] < b[j] then do
-    //                 combinedArr[inx] <- b[j]
-    //                 inx <- inx + 1 
-                
     result
 
 
 
-// let mutable inx = 0
-// for i in 0..a.Length do
-//     for j in 0..b.Length do
-//         if a[i] > b[j] or a[i] = b[j] then do
-//             combinedArr[inx] <- a[i]
-//             inx <- inx + 1
-//         else if a[i] < b[j] then do
-//             combinedArr[inx] <- b[j]
-//             inx <- inx + 1
 
 //type MyType = {| color:string; weight:float;fish:string|}
 
@@ -274,20 +252,14 @@ type MyList = Cons of int * MyList | Nil
 let ll = Cons(3, Cons(5, Cons(0,Nil)))
 
 
-let zip (v1:int, v2:int) = 
-    let mutable combArr = Array.zeroCreate 2
-    let combArr[0] <- v1
-    let combArr[1] <- v2
-    combArr 
-
 let zipList (l1:list<int>) (l2:list<int>) = 
     let len = l1.Length + l2.Length 
     let mutable combArr = Array.zeroCreate len
     for i=0 to l1.Length do
-        combArr[i] <- l1[i]
+        combArr.[i] <- l1.[i]
     let mutable ind = 0
     for i=l1.Length to len do
-        combArr[i] <- l1[ind]
+        combArr.[i] <- l1.[ind]
         ind <- ind + 1
 
 let rec count (a:MyList) = 
@@ -303,11 +275,28 @@ let rec add (a:MyList) =
 
 
 
+let l1 = [1;2;3;4;5]
+let l2 = [11;12;13;14;15]
+
+
+type T = int
+type U = string
+type V = T * T * U
+
+let v:V = (3, 3, "ddd")
+
+
+let xx = List.zip l1 l2
+
+
+
 [<EntryPoint>]
 let randfn argument =
-    printfn "%A" var1
-    printfn "%A" var2
+    //printfn "%A" var1
+    //printfn "%A" var2
 
-    printfn "hello"
-    GreetFn "Hello!"
+    //printfn "hello"
+    //GreetFn "Hello!"
+
+    printfn "%A" xx
     0
