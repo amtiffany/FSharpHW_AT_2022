@@ -274,6 +274,22 @@ type MyList = Cons of int * MyList | Nil
 let ll = Cons(3, Cons(5, Cons(0,Nil)))
 
 
+let zip (v1:int, v2:int) = 
+    let mutable combArr = Array.zeroCreate 2
+    let combArr[0] <- v1
+    let combArr[1] <- v2
+    combArr 
+
+let zipList (l1:list<int>) (l2:list<int>) = 
+    let len = l1.Length + l2.Length 
+    let mutable combArr = Array.zeroCreate len
+    for i=0 to l1.Length do
+        combArr[i] <- l1[i]
+    let mutable ind = 0
+    for i=l1.Length to len do
+        combArr[i] <- l1[ind]
+        ind <- ind + 1
+
 let rec count (a:MyList) = 
     match a with
     | Nil -> 0
