@@ -197,18 +197,20 @@ let mergeUsingIndexes (a:int[]) (b:int[]):int[] =
     // as you select element from each input array you will ned to update indexes
     let mutable XInx = 0
     let mutable YInx = 0
-    if not(a.Length = 0) then do
-        if not(b.Length = 0) then do
-            for i=0 to combined do
-                if a[XInx] > b[YInx] || a[XInx] = b[YInx] || YInx = b.Length then do
-                    result[i] <- a[XInx]
-                    XInx <- XInx + 1
-                else
-                    if a[XInx] < b[YInx] || XInx = a.Length then do
-                        result[i] <- b[YInx]
-                        YInx <- YInx + 1
+    for i=0 to combined do
+        if a.[XInx] > b.[YInx] || a.[XInx] = b.[YInx] || YInx = b.Length then do
+            result.[i] <- a.[XInx]
+            XInx <- XInx + 1
+        else
+            if a.[XInx] < b.[YInx] || XInx = a.Length then do
+                result.[i] <- b.[YInx]
+                YInx <- YInx + 1
     result
 
+
+
+
+//type MyType = {| color:string; weight:float;fish:string|}
 
 type MyRecord = { 
     color:string
@@ -274,11 +276,28 @@ let zip (v1:int, v2:int) =
 
 
 
+let l1 = [1;2;3;4;5]
+let l2 = [11;12;13;14;15]
+
+
+type T = int
+type U = string
+type V = T * T * U
+
+let v:V = (3, 3, "ddd")
+
+
+let xx = List.zip l1 l2
+
+
+
 [<EntryPoint>]
 let randfn argument =
-    printfn "%A" var1
-    printfn "%A" var2
+    //printfn "%A" var1
+    //printfn "%A" var2
 
-    printfn "hello"
-    GreetFn "Hello!"
+    //printfn "hello"
+    //GreetFn "Hello!"
+
+    printfn "%A" xx
     0
