@@ -197,42 +197,18 @@ let mergeUsingIndexes (a:int[]) (b:int[]):int[] =
     // as you select element from each input array you will ned to update indexes
     let mutable XInx = 0
     let mutable YInx = 0
-    for i=0 to combined do
-        if a[XInx] > b[YInx] || a[XInx] = b[YInx] then do
-            result[i] <- a[XInx]
-            XInx <- XInx + 1
-        else
-            if a[XInx] < b[YInx] then do
-                result[i] <- b[YInx]
-                YInx <- YInx + 1
-                
-    // let mutable inx = 0
-    // let combinedArr = [|for i in 0..combined -> 0|]
-    // for i = 0 to a.Length do
-    //     for j = 0 to b.Length do
-    //         if a[i] > b[j] || a[i] = b[j] then do
-    //             combinedArr[inx] <- a[i]
-    //             inx <- inx + 1
-    //         else 
-    //             if a[i] < b[j] then do
-    //                 combinedArr[inx] <- b[j]
-    //                 inx <- inx + 1 
-                
+    if not(a.Length = 0) then do
+        if not(b.Length = 0) then do
+            for i=0 to combined do
+                if a[XInx] > b[YInx] || a[XInx] = b[YInx] || YInx = b.Length then do
+                    result[i] <- a[XInx]
+                    XInx <- XInx + 1
+                else
+                    if a[XInx] < b[YInx] || XInx = a.Length then do
+                        result[i] <- b[YInx]
+                        YInx <- YInx + 1
     result
 
-
-
-// let mutable inx = 0
-// for i in 0..a.Length do
-//     for j in 0..b.Length do
-//         if a[i] > b[j] or a[i] = b[j] then do
-//             combinedArr[inx] <- a[i]
-//             inx <- inx + 1
-//         else if a[i] < b[j] then do
-//             combinedArr[inx] <- b[j]
-//             inx <- inx + 1
-
-//type MyType = {| color:string; weight:float;fish:string|}
 
 type MyRecord = { 
     color:string
@@ -275,30 +251,25 @@ let ll = Cons(3, Cons(5, Cons(0,Nil)))
 
 
 let zip (v1:int, v2:int) = 
-    let mutable combArr = Array.zeroCreate 2
-    let combArr[0] <- v1
-    let combArr[1] <- v2
-    combArr 
+    let total = v1.Length + v2.Length
+    let mutable tupleList = [for i in 1..total -> (0,0)]
+    if v1.Length = v2.Length then do
+        for i=0 to v1.Length do
+            let tupl = (v1.[i], v2.[i])
+            let tupleList.[i] = tupl
+    tupleList
 
-let zipList (l1:list<int>) (l2:list<int>) = 
-    let len = l1.Length + l2.Length 
-    let mutable combArr = Array.zeroCreate len
-    for i=0 to l1.Length do
-        combArr[i] <- l1[i]
-    let mutable ind = 0
-    for i=l1.Length to len do
-        combArr[i] <- l1[ind]
-        ind <- ind + 1
 
-let rec count (a:MyList) = 
-    match a with
-    | Nil -> 0
-    | Cons(h, t) -> 1 + count t 
 
-let rec add (a:MyList) =
-    match a with 
-    | Nil -> 0
-    | Cons(h, t) -> h + add t 
+// let rec count (a:MyList) = 
+//     match a with
+//     | Nil -> 0
+//     | Cons(h, t) -> 1 + count t 
+
+// let rec add (a:MyList) =
+//     match a with 
+//     | Nil -> 0
+//     | Cons(h, t) -> h + add t 
 
 
 
