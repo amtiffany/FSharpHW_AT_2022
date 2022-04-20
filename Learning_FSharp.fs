@@ -252,13 +252,15 @@ type MyList = Cons of int * MyList | Nil
 let ll = Cons(3, Cons(5, Cons(0,Nil)))
 
 
-let zip (v1:int, v2:int) = 
+let zip (v1:int[], v2:int[]) = 
     let total = v1.Length + v2.Length
-    let mutable tupleList = [for i in 1..total -> (0,0)]
+    let tupleList = [|for i in 1..total -> (0,0)|]
+    //let a:array<int*int> = Array.zeroCreate total
+
     if v1.Length = v2.Length then do
         for i=0 to v1.Length do
             let tupl = (v1.[i], v2.[i])
-            let tupleList.[i] = tupl
+            tupleList.[i] <- tupl
     tupleList
 
 
